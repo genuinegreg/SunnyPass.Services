@@ -50,7 +50,7 @@ angular.module('webappApp')
 
         this.deriveEncryptionKey = function(password, seed) {
             CryptoJS.PBKDF2(password, seed, { keySize: 512/32, iterations: 200 }).toString(CryptoJS.enc.Hex);
-        }
+        };
 
 
     });
