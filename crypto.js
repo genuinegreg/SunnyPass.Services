@@ -4,7 +4,7 @@
  * Crypto module
  * Encrypt and decrypt data using AES.
  */
-angular.module('webappApp')
+angular.module('SunnyPass.Crypto', [])
     .service('Crypto', function Crypto() {
 
         /**

@@ -3,8 +3,8 @@
 /**
  * SunnyPass core module
  */
-angular.module('webappApp')
-    .factory('Sunnypass', function Sunypass($q, $log, Crypto, $timeout) {
+angular.module('SunnyPass.Service', ['SunnyPass.Crypto'])
+    .factory('SunnyPass', function Sunypass($q, $log, Crypto, $timeout) {
 
 
 
