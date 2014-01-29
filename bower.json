@@ -6,7 +6,6 @@
         "Grégoire Audoux <projects@gregoire-audoux.fr>"
     ],
     "main": [
-        "lib/index.js",
         "lib/Crypto.js",
         "lib/SunnyPass.js",
         "lib/SunnyPassLocker.js",
@@ -31,6 +30,10 @@
         "node_modules",
         "bower_components",
         "test",
-        "tests"
+        "tests",
+        "karma.conf.js",
+        "package.json",
+        ".gitignore",
+        ".jshintrc"
     ]
 }
