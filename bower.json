@@ -5,6 +5,13 @@
     "authors": [
         "Grégoire Audoux <projects@gregoire-audoux.fr>"
     ],
+    "main": [
+        "lib/index.js",
+        "lib/Crypto.js",
+        "lib/SunnyPass.js",
+        "lib/SunnyPassLocker.js",
+        "lib/SunnyPassSecret.js"
+    ],
     "dependencies": {
         "angular": "1.2.9",
         "json3": "~3.2.6",
