@@ -1,0 +1,36 @@
+{
+    "name": "SunnyPass.Services",
+    "version": "0.0.1",
+    "homepage": "https://github.com/genuinegreg/SunnyPass.Services",
+    "authors": [
+        "Grégoire Audoux <projects@gregoire-audoux.fr>"
+    ],
+    "main": [
+        "lib/index.js",
+        "lib/Crypto.js",
+        "lib/SunnyPass.js",
+        "lib/SunnyPassLocker.js",
+        "lib/SunnyPassSecret.js"
+    ],
+    "dependencies": {
+        "angular": "1.2.9",
+        "json3": "~3.2.6",
+        "es5-shim": "~2.1.0",
+        "pouchdb": "~1.1.0",
+        "async": "~0.2.5",
+        "angular-cache": "~2.3.0",
+        "crypto-js": "http://crypto-js.googlecode.com/files/CryptoJS%20v3.1.2.zip"
+    },
+    "devDependencies": {
+        "angular-mocks": "1.2.9"
+    },
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

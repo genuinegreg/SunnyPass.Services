@@ -1,0 +1,23 @@
+{
+  "name": "SunnyPass.Services",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+      "karma": "~0.10.9"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/genuinegreg/SunnyPass.Services.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/genuinegreg/SunnyPass.Services/issues"
+  },
+  "homepage": "https://github.com/genuinegreg/SunnyPass.Services"
+}
