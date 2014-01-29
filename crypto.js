@@ -30,7 +30,7 @@ angular.module('SunnyPass.Crypto', [])
         };
 
         /**
-         * generate a random
+         * generate a random key
          * @param length key length (default to 256 bits)
          * @returns {string}
          */
@@ -49,7 +49,7 @@ angular.module('SunnyPass.Crypto', [])
         };
 
         this.deriveEncryptionKey = function(password, seed) {
-            CryptoJS.PBKDF2(password, seed, { keySize: 512/32, iterations: 200 }).toString(CryptoJS.enc.Hex);
+            return CryptoJS.PBKDF2(password, seed, { keySize: 512/32, iterations: 200 }).toString(CryptoJS.enc.Hex);
         };
 
 
