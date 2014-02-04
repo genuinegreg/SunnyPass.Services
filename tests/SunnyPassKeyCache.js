@@ -3,7 +3,7 @@
 describe('Service: SunnyPassKeyCache', function() {
 
     // load the service's module
-    beforeEach(module('SunnyPass.Service'));
+    beforeEach(module('SunnyPass.Services'));
 
     // instantiate service
     var KeyCache;
