@@ -29,7 +29,9 @@
         "it",
         "beforeEach",
         "expect",
-        "inject"
+        "inject",
+        "runs",
+        "waitsFor"
 
     ],
 
