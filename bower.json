@@ -1,15 +1,15 @@
 {
     "name": "SunnyPass.Services",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/genuinegreg/SunnyPass.Services",
     "authors": [
         "Grégoire Audoux <projects@gregoire-audoux.fr>"
     ],
     "main": [
-        "lib/index.js",
         "lib/Crypto.js",
         "lib/SunnyPass.js",
         "lib/SunnyPassLocker.js",
+        "lib/SunnyPassKeyCache.js",
         "lib/SunnyPassSecret.js"
     ],
     "dependencies": {
@@ -31,6 +31,10 @@
         "node_modules",
         "bower_components",
         "test",
-        "tests"
+        "tests",
+        "karma.conf.js",
+        "package.json",
+        ".gitignore",
+        ".jshintrc"
     ]
 }

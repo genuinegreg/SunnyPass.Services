@@ -24,7 +24,13 @@
         "CryptoJS",
         "async",
         "PouchDB",
-        "emit" // pouchDb query function
+        "emit", // pouchDb query function
+        "describe",
+        "it",
+        "beforeEach",
+        "expect",
+        "inject"
+
     ],
 
 

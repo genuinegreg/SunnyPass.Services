@@ -90,7 +90,7 @@ describe('Service: Crypto', function () {
         });
     });
 
-    describe('deriveEncryptionKey()', function() {
+    describe('.deriveEncryptionKey()', function() {
         it('should generate 512bits key', function() {
             var password = Crypto.generateKey();
             var seed = Crypto.generateKey();
