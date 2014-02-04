@@ -9,6 +9,7 @@
         "lib/Crypto.js",
         "lib/SunnyPass.js",
         "lib/SunnyPassLocker.js",
+        "lib/SunnyPassKeyCache.js",
         "lib/SunnyPassSecret.js"
     ],
     "dependencies": {
