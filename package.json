@@ -1,11 +1,11 @@
 {
   "name": "SunnyPass.Services",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-      "karma": "~0.10.9"
+    "karma": "~0.10.9"
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start"
