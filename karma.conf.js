@@ -26,7 +26,7 @@ module.exports = function(config) {
             'bower_components/es5-shim/es5-shim.js',
             'bower_components/json3/lib/json3.js',
             'bower_components/pouchdb/dist/pouchdb-nightly.js',
-            'lib/**/*.js',
+            'src/**/*.js',
             'tests/**/*.js'
         ],
 

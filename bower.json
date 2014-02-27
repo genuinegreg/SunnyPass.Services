@@ -6,11 +6,11 @@
         "Grégoire Audoux <projects@gregoire-audoux.fr>"
     ],
     "main": [
-        "lib/Crypto.js",
-        "lib/SunnyPass.js",
-        "lib/SunnyPassLocker.js",
-        "lib/SunnyPassKeyCache.js",
-        "lib/SunnyPassSecret.js"
+        "src/Crypto.js",
+        "src/SunnyPass.js",
+        "src/SunnyPassLocker.js",
+        "src/SunnyPassKeyCache.js",
+        "src/SunnyPassSecret.js"
     ],
     "dependencies": {
         "angular": "1.2.12",
