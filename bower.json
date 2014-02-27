@@ -11,6 +11,7 @@
         "src/SunnyPassLocker.js",
         "src/SunnyPassKeyCache.js",
         "src/SunnyPassSecret.js",
+        "src/Lawnchair.js",
         "vendors/lawnchair/Lawnchair-chromeStorage-localStorage.js"
     ],
     "dependencies": {
