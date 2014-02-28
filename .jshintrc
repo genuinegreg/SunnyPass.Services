@@ -31,7 +31,9 @@
         "expect",
         "inject",
         "runs",
-        "waitsFor"
+        "waitsFor",
+        "chrome",
+        "Lawnchair"
 
     ],
 

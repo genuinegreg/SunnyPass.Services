@@ -23,14 +23,14 @@ describe('Service: SunnyPassKeyCache', function () {
 
             var resolvedValue = KeyCache.get(key);
 
-            expect(resolvedValue).toEqual(expectedValue);
+            resolvedValue.should.equal(expectedValue);
         }))
 
         it('should return undefined if their is not entry in cache', inject(function ($rootScope, Crypto, $timeout) {
             var key = 'key_' + Crypto.generateKey(32);
 
             var resolvedValue = KeyCache.get(key);
-            expect(resolvedValue).not.toBeDefined();
+            (!!resolvedValue).should.not.be.ok;
 
         }));
 

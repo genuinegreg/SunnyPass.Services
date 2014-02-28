@@ -9,11 +9,12 @@ module.exports = function(config) {
 
 
         // frameworks to use
-        frameworks: ['jasmine'],
+        frameworks: ['mocha'],
 
 
         // list of files / patterns to load in the browser
         files: [
+            'bower_components/should/should.js',
             'bower_components/angular/angular.js',
             'bower_components/angular-mocks/angular-mocks.js',
             'bower_components/angular-cache/dist/angular-cache.js',
@@ -23,10 +24,9 @@ module.exports = function(config) {
             'bower_components/crypto-js/rollups/pbkdf2.js',
             'bower_components/crypto-js/components/core-min.js',
             'bower_components/crypto-js/components/enc-base64.js',
-            'bower_components/es5-shim/es5-shim.js',
-            'bower_components/json3/lib/json3.js',
             'bower_components/pouchdb/dist/pouchdb-nightly.js',
             'src/**/*.js',
+            'vendors/**/*.js',
             'tests/**/*.js'
         ],
 

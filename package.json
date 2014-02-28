@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "karma": "~0.10.9"
+    "karma": "~0.10.9",
+    "karma-mocha": "~0.1.1"
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start"
