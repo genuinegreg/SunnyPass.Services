@@ -74,7 +74,7 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'Lawnchair', 'jmdobry.
             }
 
             // asynchronously update lockers list (eventual consistency is OK)
-            Lawnchair.put(secret.shared,
+            Lawnchair.save(secret.shared,
                 {
                     secret: secret
                 }
