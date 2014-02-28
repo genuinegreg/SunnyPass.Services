@@ -4,13 +4,7 @@
  * SunnyPass core module
  */
 angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache'])
-    .factory('SunnyPass', function SunnyPassFactory($q, $log, $angularCacheFactory, Locker, Secret) {
-
-        // persistent cache used to list locker available on the browser
-        var lockersListCache = $angularCacheFactory('lockersListCache', {
-            storageMode: 'localStorage',
-            verifyIntegrity: true
-        });
+    .factory('SunnyPass', function SunnyPassFactory($q, $log, $angularCacheFactory, Lawnchair, Locker, Secret) {
 
         // volatile cache use to store unlocked Lockers
         var lockersCache = $angularCacheFactory('lockersCache', {});
@@ -37,23 +31,28 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache
             var _this = this;
             var d = $q.defer();
 
-            async.map(
-                lockersListCache.keys(),
-                function iterator(sharedKey, cb) {
-                    _this.getBySharedSecret(sharedKey).then(
-                        function resolved(locker) {
-                            cb(undefined, locker);
+
+            Lawnchair.keys().then(
+                function resolved(keys) {
+                    async.map(
+                        keys,
+                        function iterator(sharedKey, cb) {
+                            _this.getBySharedSecret(sharedKey).then(
+                                function resolved(locker) {
+                                    cb(undefined, locker);
+                                },
+                                function rejected() {
+                                    cb(new Error('Unknown error'));
+                                }
+                            );
                         },
-                        function rejected() {
-                            cb(new Error('Unknown error'));
+                        function callback(err, results) {
+                            if (err) {
+                                return d.reject(err);
+                            }
+                            d.resolve(results);
                         }
                     );
-                },
-                function callback(err, results) {
-                    if (err) {
-                        return d.reject(err);
-                    }
-                    d.resolve(results);
                 }
             );
 
@@ -74,14 +73,12 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache
                 secret = new Secret(secret);
             }
 
-            // if locker not present in lockersListCache
-            if (!lockersListCache.get(secret.shared)) {
-                lockersListCache.put(secret.shared,
-                    {
-                        secret: secret
-                    }
-                );
-            }
+            // asynchronously update lockers list (eventual consistency is OK)
+            Lawnchair.put(secret.shared,
+                {
+                    secret: secret
+                }
+            );
 
             // find locker in lockerCache
             var locker = lockersCache.get(secret.key);
@@ -118,22 +115,17 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache
         SunnyPass.prototype.getBySharedSecret = function (sharedSecret) {
             $log.debug('SunnyPass.getBySharedSecret()');
             var _this = this;
-            var d = $q.defer();
 
-            var item = lockersListCache.get(sharedSecret);
 
-            if (!item) {
-                d.reject();
-            }
-            else {
-                _this.get(item.secret).then(
-                    d.resolve,
-                    d.reject,
-                    d.notify
-                );
-            }
+            return Lawnchair.get(sharedSecret).then(
+                function resolved(item) {
+                    if (!item) {
+                        return $q.reject()
+                    }
 
-            return d.promise;
+                    return _this.get(item.secret);
+                }
+            );
         };
 
         SunnyPass.prototype.wipeLocker = function (secret) {
@@ -151,8 +143,8 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache
                 ).then(
                 function resovled() {
                     // and clear locker list and locker cache
-                    lockersListCache.remove(secret.shared);
                     lockersCache.remove(secret.key);
+                    return Lawnchair.remove(secret.shared);
                 }
             );
 
@@ -169,7 +161,7 @@ angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache
 
             // clear caches
             Locker.lockAll();
-            lockersListCache.removeAll();
+            Lawnchair.nuke();
             lockersCache.removeAll();
 
             // wipe dbs
