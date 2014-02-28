@@ -153,6 +153,13 @@ Lawnchair.prototype = {
 };
 
 
+function isChromeApp() {
+    return (typeof chrome !== "undefined" &&
+        typeof chrome.storage !== "undefined" &&
+        typeof chrome.storage.local !== "undefined");
+}
+
+
 /**
  * chrome.storage storage adapter
  * ===
@@ -164,11 +171,7 @@ Lawnchair.prototype = {
 //
 Lawnchair.adapter('chrome-storage', (function () {
 
-    function isChromeApp() {
-        return (typeof chrome !== "undefined" &&
-            typeof chrome.storage !== "undefined" &&
-            typeof chrome.storage.local !== "undefined");
-    }
+
 
     var storage;
     if (isChromeApp()) {
@@ -448,7 +451,10 @@ Lawnchair.adapter('chrome-storage', (function () {
 // not chainable: valid, keys
 //
 Lawnchair.adapter('dom', (function () {
-    var storage = window.localStorage
+    var storage;
+    if (!isChromeApp()) {
+        storage = window.localStorage;
+    }
     // the indexer is an encapsulation of the helpers needed to keep an ordered index of the keys
     var indexer = function (name) {
         return {
