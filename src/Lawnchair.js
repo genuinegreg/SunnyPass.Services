@@ -3,49 +3,80 @@
 /**
  * Lawnchair wrapper
  */
-angular.module('SunnyPass.Crypto', [])
-    .service('Lawnchair', function Lawnchair($q) {
+angular.module('Lawnchair', [])
+    .service('Lawnchair', function LawnchairSercice($q, $log) {
 
-        this.lawnchair = new Lawnchair();
+        var _this = this;
 
-        this.get = function (key) {
+        _this.lawnchair = new Lawnchair(function () {
+        });
+
+        _this.get = function (key) {
             var d = $q.defer();
 
-            this.lawnchair.get(key, function (value) {
-                if (!value) {
-                    d.reject('no value');
-                    return;
+            _this.lawnchair.get(
+                key,
+                function (item) {
+                    if (!item) {
+                        d.reject();
+                        return;
+                    }
+
+                    d.resolve(item.value);
                 }
 
-                d.resolve(value);
-            });
+            );
 
             return d.promise;
         }
 
-        this.keys = function () {
+        _this.keys = function () {
             var d = $q.defer();
 
-            this.lawnchair.keys(function (keys) {
-                if (!keys) {
-                    d.reject('keys is falsy');
-                    return;
-                }
-
-                d.resolve(keys);
-            })
+            _this.lawnchair.keys(
+                d.resolve
+            )
 
             return d.promise;
         }
 
-        this.save = function (key, value) {
+        _this.save = function (key, value) {
             var d = $q.defer();
 
-            this.lawnchair.save({key: key, options: value}, function (obj) {
-                d.resolve();
-            })
+            $log.debug('save');
+
+            _this.lawnchair.save(
+                {key: key, value: value},
+                d.resolve
+
+            );
 
             return d.promise;
+        }
+
+        _this.remove = function (key) {
+            var d = $q.defer();
+
+            _this.lawnchair.remove(
+                key,
+                d.resolve
+            )
+
+
+            return d.promise;
+        }
+
+        _this.nuke = function () {
+            var d = $q.defer();
+
+            console.log('yo', _this);
+
+            _this.lawnchair.nuke(
+                d.resolve
+            );
+
+            return d.promise;
+
         }
 
     });
