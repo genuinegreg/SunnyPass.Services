@@ -3,7 +3,7 @@
 /**
  * SunnyPass core module
  */
-angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'jmdobry.angular-cache'])
+angular.module('SunnyPass.Services', ['SunnyPass.Crypto', 'Lawnchair', 'jmdobry.angular-cache'])
     .factory('SunnyPass', function SunnyPassFactory($q, $log, $angularCacheFactory, Lawnchair, Locker, Secret) {
 
         // volatile cache use to store unlocked Lockers
